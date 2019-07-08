@@ -2,7 +2,7 @@
 
 Bitcoin Core RPC client version v0.18.0.0-g2472733a24a9364e4c6233ccd04166a26a68cc65
 
-If you're looking for the official Bitcoin Core for ARM download it directly from the [bitcoincore download site](https://bitcoincore.org/en/download/), make sure you download the 32-bit version, because as of this moment Raspbian runs as 32-bit.
+If you're looking for the official Bitcoin Core for ARM download it directly from the [bitcoincore download site](https://bitcoincore.org/en/download/), make sure you download the 32-bit version, checkout the recommendations below.
 
 This repository contains bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-wallet and test_bitcoin compiled from source code in Raspberry Pi Model B from the [official source code](https://bitcoincore.org/en/download/).
 
@@ -49,9 +49,9 @@ $ gpg --sign-key 9747978CEAC8ACDEAF2AC3773661EB54D8D413C8
 
 ### Recommendations
 Here are list a few recommendations before running `bitcoind` for the first time
-* Use [Raspbian Lite](https://www.raspberrypi.org/downloads/raspbian/), at the time of this writing I was using version `June 2019`, I followed the instructions in [this guide](https://medium.com/@meeDamian/bitcoin-full-node-on-rbp3-revised-88bb7c8ef1d1) to install it; here's my information directly from the terminal:
-  * `$ uname -a` > `Linux raspberrypi 4.19.50-v7+ #896 SMP Thu Jun 20 16:11:44 BST 2019 armv7l GNU/Linux`
-  * `$ dpkg --print-architecture ` > `armhf`
+* Use [Raspbian Lite](https://www.raspberrypi.org/downloads/raspbian/), at the time of this writing I was using version `June 2019`, here's the information from the terminal:
+  * `$ uname -a` prints `Linux raspberrypi 4.19.50-v7+ #896 SMP Thu Jun 20 16:11:44 BST 2019 armv7l GNU/Linux`
+  * `$ dpkg --print-architecture ` prints `armhf`
 * Use an Micro SDCard at least 512GB (when running without external HDs).
 * Disable swap to [prolong the life of the Micro SDCard](https://raspberrypi.stackexchange.com/a/186).
   * `$ sudo swapoff --all` disabled swap, will revert after reboot
@@ -67,7 +67,7 @@ Here are list a few recommendations before running `bitcoind` for the first time
   * For convenience, download the `bitcoind.service` file in this repository and copy this file to `/etc/systemd/system/`
   * Run `$ sudo systemctl enable bitcoind` to enable it.
   * Run `$ sudo systemctl start bitcoind` to start it.
-* Install dependencies (hint: below)
+* Install dependencies (might not be needed for official binaries)
 
 ### Dependencies
 To build from source code I had to install the following packages, if you don't have these installed on your system, run will fail and you will need to install them by running the below command:
