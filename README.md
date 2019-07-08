@@ -2,9 +2,11 @@
 
 Bitcoin Core RPC client version v0.18.0.0-g2472733a24a9364e4c6233ccd04166a26a68cc65
 
-This repository contains bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-wallet and test_bitcoin compiled in Raspberry Pi Model B from the [official source code](https://bitcoincore.org/en/download/).
+If you're looking for the official Bitcoin Core for ARM download it directly from the [bitcoincore download site](https://bitcoincore.org/en/download/), make sure you download the 32-bit version, because as of this moment Raspbian runs as 32-bit.
 
-Building the bitcoin core for Raspberry was very time consuming so I'm making these publicly available for my personal backup, please feel free to use them at your own risk, I highly recommand you building these from source, I followed a great guide by Damian Mee titled [Bitcoin Full Node on RBP3 (revised)](https://medium.com/@meeDamian/bitcoin-full-node-on-rbp3-revised-88bb7c8ef1d1).
+This repository contains bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-wallet and test_bitcoin compiled from source code in Raspberry Pi Model B from the [official source code](https://bitcoincore.org/en/download/).
+
+Building the bitcoin core for Raspberry was very time consuming so I'm making these publicly available for my personal backup, please feel free to use them at your own risk, I highly recommand downloading these binaries from the official download site or build from source, I followed a great guide by Damian Mee titled [Bitcoin Full Node on RBP3 (revised)](https://medium.com/@meeDamian/bitcoin-full-node-on-rbp3-revised-88bb7c8ef1d1).
 
 ### Check binary integrity
 After downloading the files, check integrity by running the following command from the terminal:
