@@ -2,9 +2,9 @@
 
 Bitcoin Core RPC client version v0.18.0.0-g2472733a24a9364e4c6233ccd04166a26a68cc65
 
-This repository contains bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-wallet and test_bitcoin compiled in Raspberry Pi Model B.
+This repository contains bitcoind, bitcoin-cli, bitcoin-tx, bitcoin-wallet and test_bitcoin compiled in Raspberry Pi Model B from the [official source code](https://bitcoincore.org/en/download/).
 
-Building the bitcoin core for Raspberry was very time consuming so I'm making these publicly available for my personal backup, please feel free to use them at your own risk, I highly recommand you building these from source, I followed a great tutorial by Damian Mee - [Bitcoin Full Node on RBP3 (revised)](https://medium.com/@meeDamian/bitcoin-full-node-on-rbp3-revised-88bb7c8ef1d1).
+Building the bitcoin core for Raspberry was very time consuming so I'm making these publicly available for my personal backup, please feel free to use them at your own risk, I highly recommand you building these from source, I followed a great guide by Damian Mee titled [Bitcoin Full Node on RBP3 (revised)](https://medium.com/@meeDamian/bitcoin-full-node-on-rbp3-revised-88bb7c8ef1d1).
 
 ### Check binary integrity
 After downloading the files, check integrity by running the following command from the terminal:
@@ -45,3 +45,18 @@ $ gpg --get-key
 $ gpg --sign-key 9747978CEAC8ACDEAF2AC3773661EB54D8D413C8
 ```
 
+### Recommendations
+Here I list a few recommendations before running `bitcoind` for the first time
+* Use [Raspbian Lite](https://www.raspberrypi.org/downloads/raspbian/), at the time of this writing I was using version `June 2019`, I followed the instructions in [this guide](https://medium.com/@meeDamian/bitcoin-full-node-on-rbp3-revised-88bb7c8ef1d1) to install it.
+* Use an Micro SDCard at least 512GB (when running without external HDs).
+* Disable swap to [prolong the life of the Micro SDCard](https://raspberrypi.stackexchange.com/a/186).
+  * `$ sudo swapoff --all` disabled swap, will revert after reboot
+  * `$ sudo apt-get remove dphys-swapfile` permanently disabled swap
+* Download the entire blockchain on a personal computer and then copy everything except the wallet dir.
+* Encrypt and backup the wallet.
+* Enable RPC only for local networks.
+* If SSH is enabled, change the defauls password for `pi` and `root`.
+* Install a Firewall like the `uwf` (Uncomplicated Firewall).
+* Install something like `Fail2Ban` to scan logs and ban IP addresses conducting too many failed login attempts.
+* Run the bitcoind service as a non-root user.
+* Create a service to autostart bitcoind on reboot.
