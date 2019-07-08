@@ -47,7 +47,9 @@ $ gpg --sign-key 9747978CEAC8ACDEAF2AC3773661EB54D8D413C8
 
 ### Recommendations
 Here are list a few recommendations before running `bitcoind` for the first time
-* Use [Raspbian Lite](https://www.raspberrypi.org/downloads/raspbian/), at the time of this writing I was using version `June 2019`, I followed the instructions in [this guide](https://medium.com/@meeDamian/bitcoin-full-node-on-rbp3-revised-88bb7c8ef1d1) to install it.
+* Use [Raspbian Lite](https://www.raspberrypi.org/downloads/raspbian/), at the time of this writing I was using version `June 2019`, I followed the instructions in [this guide](https://medium.com/@meeDamian/bitcoin-full-node-on-rbp3-revised-88bb7c8ef1d1) to install it; here's my information directly from the terminal:
+  * `$ uname -a` > `Linux raspberrypi 4.19.50-v7+ #896 SMP Thu Jun 20 16:11:44 BST 2019 armv7l GNU/Linux`
+  * `$ dpkg --print-architecture ` > `armhf`
 * Use an Micro SDCard at least 512GB (when running without external HDs).
 * Disable swap to [prolong the life of the Micro SDCard](https://raspberrypi.stackexchange.com/a/186).
   * `$ sudo swapoff --all` disabled swap, will revert after reboot
@@ -63,3 +65,11 @@ Here are list a few recommendations before running `bitcoind` for the first time
   * For convenience, download the `bitcoind.service` file in this repository and copy this file to `/etc/systemd/system/`
   * Run `$ sudo systemctl enable bitcoind` to enable it.
   * Run `$ sudo systemctl start bitcoind` to start it.
+* Install dependencies (hint: below)
+
+### Dependencies
+To build from source code I had to install the following packages, if you don't have these installed on your system, run will fail and you will need to install them by running the below command:
+```
+$ sudo apt install libssl-dev libevent-dev bsdmainutils libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev libminiupnpc-dev libzmq3-dev jq
+```
+I removed `git build-essential libtool autotools-dev automake pkg-config` from the above command because I think these are build only specific requirements, please let me know if any of these are required to run as well.
