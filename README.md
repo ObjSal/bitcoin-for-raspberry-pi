@@ -46,12 +46,12 @@ $ gpg --sign-key 9747978CEAC8ACDEAF2AC3773661EB54D8D413C8
 ```
 
 ### Recommendations
-Here I list a few recommendations before running `bitcoind` for the first time
+Here are list a few recommendations before running `bitcoind` for the first time
 * Use [Raspbian Lite](https://www.raspberrypi.org/downloads/raspbian/), at the time of this writing I was using version `June 2019`, I followed the instructions in [this guide](https://medium.com/@meeDamian/bitcoin-full-node-on-rbp3-revised-88bb7c8ef1d1) to install it.
 * Use an Micro SDCard at least 512GB (when running without external HDs).
 * Disable swap to [prolong the life of the Micro SDCard](https://raspberrypi.stackexchange.com/a/186).
   * `$ sudo swapoff --all` disabled swap, will revert after reboot
-  * `$ sudo apt-get remove dphys-swapfile` permanently disabled swap
+  * `$ sudo apt-get remove dphys-swapfile` permanently disables swap
 * Download the entire blockchain on a personal computer and then copy everything except the wallet dir.
 * Encrypt and backup the wallet.
 * Enable RPC only for local networks.
@@ -60,3 +60,6 @@ Here I list a few recommendations before running `bitcoind` for the first time
 * Install something like `Fail2Ban` to scan logs and ban IP addresses conducting too many failed login attempts.
 * Run the bitcoind service as a non-root user.
 * Create a service to autostart bitcoind on reboot.
+  * For convenience, download the `bitcoind.service` file in this repository and copy this file to `/etc/systemd/system/`
+  * Run `$ sudo systemctl enable bitcoind` to enable it.
+  * Run `$ sudo systemctl start bitcoind` to start it.
